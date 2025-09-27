@@ -18,17 +18,13 @@ class SintomasDao {
     return listaSintomas;
   }
 
-  salvar (sintoma) async {
+  salvar(sintoma) async {
     Database db = await DBHelper().initDB();
     db.insert('Sintoma', sintoma.toJson());
   }
 
-  deletar (int id) async {
+  deletar(int id) async {
     Database db = await DBHelper().initDB();
-    db.delete(
-      'Sintoma',
-      where: 'id = ?',
-      whereArgs: [id],
-    );
+    db.delete('Sintoma', where: 'id = ?', whereArgs: [id]);
   }
 }

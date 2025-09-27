@@ -50,10 +50,7 @@ class _LoginPageState extends State<LoginPage> {
                   backgroundColor: Color(0xFFE41D56),
                 ),
                 onPressed: onPressed,
-                child: Text(
-                  'Entrar',
-                  style: TextStyle(color: Colors.white),
-                ),
+                child: Text('Entrar', style: TextStyle(color: Colors.white)),
               ),
             ],
           ),
@@ -83,18 +80,14 @@ class _LoginPageState extends State<LoginPage> {
   OutlineInputBorder buildPasswordOutlineInputBorder() {
     return OutlineInputBorder(
       borderSide: BorderSide(color: Colors.grey),
-      borderRadius: BorderRadius.vertical(
-        bottom: Radius.circular(8),
-      ),
+      borderRadius: BorderRadius.vertical(bottom: Radius.circular(8)),
     );
   }
 
   OutlineInputBorder buildUserOutlineInputBorder() {
     return OutlineInputBorder(
       borderSide: BorderSide(color: Colors.grey),
-      borderRadius: BorderRadius.vertical(
-        top: Radius.circular(8),
-      ),
+      borderRadius: BorderRadius.vertical(top: Radius.circular(8)),
     );
   }
 }

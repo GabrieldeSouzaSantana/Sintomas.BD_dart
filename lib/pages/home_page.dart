@@ -42,11 +42,13 @@ class _HomePageState extends State<HomePage> {
                 MaterialPageRoute(builder: (context) => RegisterSintoma()),
               );
             },
-            child: Text("Registrar Sintoma",                   style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.w600,
-              fontSize: 16,
-            ),
+            child: Text(
+              "Registrar Sintoma",
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w600,
+                fontSize: 16,
+              ),
             ),
           ),
         ],

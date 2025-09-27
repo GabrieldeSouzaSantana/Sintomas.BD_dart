@@ -12,18 +12,13 @@ class Sintoma {
   });
 
   Sintoma.fromJson(Map<String, dynamic> json) {
-      id = json['id'];
-      nome = json['nome'];
-      icone = json['icone'];
-      cor = json['cor'];
+    id = json['id'];
+    nome = json['nome'];
+    icone = json['icone'];
+    cor = json['cor'];
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'nome': nome,
-      'icone': icone,
-      'cor': cor,
-    };
+    return {'id': id, 'nome': nome, 'icone': icone, 'cor': cor};
   }
 }
