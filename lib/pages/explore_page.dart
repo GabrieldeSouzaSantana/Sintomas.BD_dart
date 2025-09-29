@@ -11,42 +11,51 @@ class ExplorePage extends StatefulWidget {
 }
 
 class _ExplorePageState extends State<ExplorePage> {
-  List<Sintoma> listaSintoma = [];
+  late Future<List<Sintoma>> futureSintomas;
 
   @override
   void initState() {
     super.initState();
-    loadData();
+    futureSintomas = SintomasDao().listarSintomas();
   }
 
   Future<void> loadData() async {
-    listaSintoma = await SintomasDao().listarSintomas();
-    setState(() {});
+    setState(() {
+      futureSintomas = SintomasDao().listarSintomas();
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.all(16.0),
-      child:
-          listaSintoma.isEmpty
-              ? Center(
-                child:
-                    listaSintoma == null
-                        ? CircularProgressIndicator()
-                        : Text("Não há sintoma registrado!"),
-              )
-              : ListView.builder(
-                itemCount: listaSintoma.length,
-                itemBuilder: (context, i) {
-                  return CardSintoma(
-                    sintoma: listaSintoma[i],
-                    onDelete: () async {
-                      await loadData();
-                    },
-                  );
-                },
-              ),
+      child: FutureBuilder<List<Sintoma>>(
+        future: futureSintomas,
+        builder: (context, snapshot) {
+          if (!snapshot.hasData) {
+            return Center(child: CircularProgressIndicator());
+          }
+
+          final listaSintomas = snapshot.requireData;
+          if (listaSintomas.isEmpty) {
+            return Center(child: Text("Não há sintomas registrados!"));
+          }
+
+          return buildListView(listaSintomas);
+        },
+      ),
+    );
+  }
+
+  buildListView(listaSintomas) {
+    return ListView.builder(
+      itemCount: listaSintomas.length,
+      itemBuilder: (context, i) {
+        return CardSintoma(
+          sintoma: listaSintomas[i],
+          onDelete: () => loadData(),
+        );
+      },
     );
   }
 }

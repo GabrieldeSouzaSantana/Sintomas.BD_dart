@@ -47,7 +47,6 @@ class _RegisterSintomaState extends State<RegisterSintoma> {
               SizedBox(height: 16),
               TextField(
                 controller: iconeController,
-                obscureText: true,
                 decoration: InputDecoration(
                   hintText: 'Ícone',
                   focusedBorder: buildUserOutlineInputBorder(),
@@ -57,7 +56,6 @@ class _RegisterSintomaState extends State<RegisterSintoma> {
               SizedBox(height: 16),
               TextField(
                 controller: corController,
-                obscureText: true,
                 decoration: InputDecoration(
                   hintText: 'cor',
                   focusedBorder: buildUserOutlineInputBorder(),
@@ -106,7 +104,7 @@ class _RegisterSintomaState extends State<RegisterSintoma> {
         ),
       );
 
-      Navigator.pop(context);
+      Navigator.pop(context, true);
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(

@@ -6,7 +6,10 @@ class CardSintoma extends StatelessWidget {
   final Sintoma sintoma;
   final VoidCallback onDelete;
 
-  const CardSintoma({Key? key, required this.sintoma, required this.onDelete})
+  const CardSintoma(
+      {Key? key,
+        required this.sintoma,
+        required this.onDelete})
     : super(key: key);
 
   @override
