@@ -92,28 +92,10 @@ class _RegisterSintomaState extends State<RegisterSintoma> {
     String icone = iconeController.text;
     String cor = corController.text;
 
-    if (nome.isNotEmpty && icone.isNotEmpty && cor.isNotEmpty) {
-      Sintoma sintoma = Sintoma(nome: nome, icone: icone, cor: cor);
-      await SintomasDao().salvar(sintoma);
+    Sintoma sintoma = Sintoma(nome: nome, icone: icone, cor: cor);
+    await SintomasDao().salvar(sintoma);
 
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Sintoma registrado com sucesso!'),
-          backgroundColor: Colors.green,
-          duration: Duration(seconds: 2),
-        ),
-      );
-
-      Navigator.pop(context, true);
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Por favor, preencha todos os campos!'),
-          backgroundColor: Colors.red,
-          duration: Duration(seconds: 2),
-        ),
-      );
-    }
+    Navigator.pop(context);
   }
 
   OutlineInputBorder buildUserOutlineInputBorder() {
